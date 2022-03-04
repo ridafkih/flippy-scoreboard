@@ -1,0 +1,112 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body {
+  font-family: monospace;
+
+  color: white;
+
+  gap: 2rem;
+
+  background: #111;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.flipper,
+.flippy {
+  border-radius: 2px;
+}
+
+.flippy {
+  width: 100%;
+  max-width: 4rem;
+
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: auto;
+}
+
+.flipper {
+  display: grid;
+  place-items: center;
+
+  width: 100%;
+  padding: 2rem 0;
+
+  grid-row-start: 1;
+  grid-column-start: 1;
+
+  background: #222;
+
+  transform-origin: top center;
+
+  font-size: 1.5rem;
+}
+
+.flippy.flipping .base {
+  user-select: none;
+  animation: 2s linear inner-flip;
+}
+
+.flippy.flipping .flipped {
+  user-select: none;
+  animation: 2s linear flip;
+
+  border: 1px solid #333;
+}
+
+.flipper.base {
+  border: 1px solid #333;
+  z-index: 1;
+}
+
+.flipper.flipped {
+  z-index: -1;
+}
+
+@keyframes inner-flip {
+  0% {
+  }
+  35% {
+    box-shadow: inset 0px 4px 24px -6px rgba(0, 0, 0, 0);
+  }
+  100% {
+    box-shadow: inset 0px 128px 8px 0px rgba(0, 0, 0, 0.45);
+  }
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateX(360deg);
+    filter: brightness(1);
+  }
+  50% {
+    transform: perspective(300px) rotateX(180deg);
+    filter: brightness(1.15);
+    z-index: 2;
+  }
+  74% {
+    filter: brightness(0.7);
+  }
+  75% {
+    filter: drop-shadow(8px 32px 32px rgba(0, 0, 0, 0));
+  }
+  85% {
+    filter: drop-shadow(8px 32px 16px rgba(0, 0, 0, 0.2));
+  }
+  100% {
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0));
+    transform: perspective(300px) rotateX(0);
+    z-index: 2;
+  }
+}
