@@ -1,3 +1,12 @@
+:root {
+  --flip-timing: 2s;
+  --rotation-perspective: 300px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   width: 100%;
@@ -9,17 +18,12 @@ body {
 }
 
 body {
-  font-family: monospace;
-
-  color: white;
-
   gap: 2rem;
 
+  color: white;
   background: #111;
-}
 
-* {
-  box-sizing: border-box;
+  font-family: monospace;
 }
 
 .flipper,
@@ -38,19 +42,18 @@ body {
 
 .flipper {
   display: grid;
+  grid-row-start: 1;
+  grid-column-start: 1;
   place-items: center;
 
   width: 100%;
   padding: 2rem 0;
 
-  grid-row-start: 1;
-  grid-column-start: 1;
-
-  background: #222;
-
   transform-origin: top center;
 
   font-size: 1.5rem;
+  border: 1px solid #333;
+  background: #222;
 }
 
 .flippy.flipping .base {
@@ -61,17 +64,6 @@ body {
 .flippy.flipping .flipped {
   user-select: none;
   animation: 2s linear flip;
-
-  border: 1px solid #333;
-}
-
-.flipper.base {
-  border: 1px solid #333;
-  z-index: 1;
-}
-
-.flipper.flipped {
-  z-index: -1;
 }
 
 @keyframes inner-flip {
@@ -90,10 +82,16 @@ body {
     transform: rotateX(360deg);
     filter: brightness(1);
   }
+  0%,
+  24% {
+    visibility: hidden;
+  }
+  25% {
+    visibility: visible;
+  }
   50% {
-    transform: perspective(300px) rotateX(180deg);
     filter: brightness(1.15);
-    z-index: 2;
+    transform: perspective(var(--rotation-perspective)) rotateX(180deg);
   }
   74% {
     filter: brightness(0.7);
@@ -106,7 +104,6 @@ body {
   }
   100% {
     filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0));
-    transform: perspective(300px) rotateX(0);
-    z-index: 2;
+    transform: perspective(var(--rotation-perspective)) rotateX(0);
   }
 }
