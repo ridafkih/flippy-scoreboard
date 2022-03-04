@@ -8,4 +8,6 @@ This repository only serves to host a little demonstration for the web developme
 
 You can view the flippy scoreboard on [the designated 'GitHub pages' page.](https://rida.dev/flippy-scoreboard/)
 
-<img src="https://i.imgur.com/iznMBLS.gif" width="500" />
+<a href="https://rida.dev/flippy-scoreboard/" target="_blank">
+  <img src="https://i.imgur.com/iznMBLS.gif" width="500" />
+</a>
