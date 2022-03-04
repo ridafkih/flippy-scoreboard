@@ -78,7 +78,7 @@ body {
 @keyframes flip {
   0% {
     transform: rotateX(360deg);
-    filter: brightness(1);
+    filter: brightness(1.5);
   }
   0%,
   24% {
