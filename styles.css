@@ -67,9 +67,7 @@ body {
 }
 
 @keyframes inner-flip {
-  0% {
-  }
-  35% {
+  50% {
     box-shadow: inset 0px 4px 24px -6px rgba(0, 0, 0, 0);
   }
   100% {
